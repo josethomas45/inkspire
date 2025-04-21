@@ -1,12 +1,14 @@
-# React + Vite
+# Inkspire – Artistic E-Commerce Platform 🎨  
+Inkspire is a clean, minimalistic e-commerce platform designed to offer a curated, limited collection of artworks from a single artist. The platform provides a streamlined, focused buying experience, where users can purchase only the currently available pieces — no browsing through large catalogs, just a direct and exclusive selection of art. Built with modern tech and a Gen Z-inspired aesthetic, **Inkspire** brings unique art into the hands of passionate collectors.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Currently Supported Features  
+Users can view and purchase the currently available art pieces, with detailed product descriptions and high-quality previews. The platform ensures a secure and smooth checkout process, offering a straightforward, no-frills shopping experience for art lovers. The artist profile includes background information, giving buyers insight into their creative journey.
 
-Currently, two official plugins are available:
+### Expanding the Functionality  
+For production use, we recommend integrating secure authentication via Auth.js or NextAuth, enabling payments through Stripe or Razorpay, and providing an efficient checkout flow. Email communication can be powered by Resend or Brevo. Analytics tools like Google Analytics can provide valuable insights into user behavior.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Developer Stack  
+This project uses Next.js for the frontend, Tailwind CSS for styling, Resend for email integration, and Auth.js for authentication. The design focuses on simplicity, performance, and a mobile-first experience.
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Resources  
+Check out the [Next.js documentation](https://nextjs.org/docs) and [Tailwind CSS documentation](https://tailwindcss.com/docs) to explore how this project can be extended or customized further.
