@@ -1,6 +1,10 @@
+import { useNavigate } from 'react-router-dom'; // Import useNavigate from react-router-dom
+
 function Header() {
-    return(
-            <header className="site-header">
+  const navigate = useNavigate(); // Initialize useNavigate hook
+
+  return (
+    <header className="site-header">
       <div className="logo"><a href="#">INK<span>SPIRE</span></a></div>
       <nav className="header-nav">
         <ul>
@@ -13,12 +17,16 @@ function Header() {
         </ul>
       </nav>
       <div className="auth-buttons">
-  <button className="auth-btn">Login / Sign Up</button>
-</div>
-
+        {/* On button click, navigate to the /auth route */}
+        <button 
+          onClick={() => navigate('/auth')} // This will redirect to /auth when clicked
+          className="auth-btn"
+        >
+          Login / Sign Up
+        </button>
+      </div>
     </header>
-    );
-
+  );
 }
 
 export default Header;
