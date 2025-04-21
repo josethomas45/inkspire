@@ -1,15 +1,15 @@
 function Header() {
     return(
             <header className="site-header">
-      <div className="logo">INK<span>SPIRE</span></div>
+      <div className="logo"><a href="#">INK<span>SPIRE</span></a></div>
       <nav className="header-nav">
         <ul>
           <li><a href="#" className="active">HOME</a></li>
           <li><a href="#">SHOP</a></li>
-          <li><a href="#">ABOUT</a></li>
-          <li><a href="#">COLLECTIONS</a></li>
-          <li><a href="#">CART</a></li>
-          <li><a href="#">CONTACT</a></li>
+          <li><a href="#About">ABOUT</a></li>
+          <li><a href="#categories">CATEGORIES</a></li>
+          <li><a href="#services">CUSTOM</a></li>
+          <li><a href="#contact">CONTACT</a></li>
         </ul>
       </nav>
       <div className="auth-buttons">
