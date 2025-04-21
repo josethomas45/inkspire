@@ -70,14 +70,54 @@ header {
     width: 100%;
   }
   
-  .header-search button {
-    padding: 8px 15px;
-    background-color: #000000;
-    border: none;
-    border-radius: 0 5px 5px 0;
-    color: white;
-    cursor: pointer;
+  .auth-buttons {
+    display: flex;
+    align-items: center;
   }
+  
+  .auth-btn {
+    padding: 10px 22px;
+    background: #111;
+    border: 2px solid #fff;
+    color: #fff;
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    transition: all 0.3s ease;
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: 1px;
+  }
+  
+  .auth-btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(
+      120deg,
+      rgba(255, 255, 255, 0.1),
+      rgba(255, 255, 255, 0.2),
+      rgba(255, 255, 255, 0.1)
+    );
+    transition: all 0.5s ease;
+    z-index: 0;
+  }
+  
+  .auth-btn:hover::before {
+    left: 0;
+  }
+  
+  .auth-btn:hover {
+    transform: scale(1.05);
+    background-color: #1a1a1a;
+    border-color: #999;
+  }
+  
   
 /*Footer*/
 footer {
@@ -107,9 +147,24 @@ footer {
     text-align: center;
   }
   
+  .hero {
+    justify-content: flex-end; /* Align content to the right */
+    padding-right: 8%; /* Add spacing from right edge */
+  }
+  
   .hero-content {
     max-width: 600px;
+    text-align: right;
+    padding: 20px;
+    border-radius: 10px;
+    transition: background-color 0.4s ease, backdrop-filter 0.4s ease;
   }
+  
+  .hero:hover .hero-content {
+    background-color: rgba(0, 0, 0, 0.4); /* Dark splash on hover */
+    backdrop-filter: blur(4px); /* Add a blur behind text */
+  }
+  
   
   /* Hero Section Background Image Hover Effect */
   .hero {

@@ -4,18 +4,18 @@ function Header() {
       <div className="logo">INK<span>SPIRE</span></div>
       <nav className="header-nav">
         <ul>
-          <li><a href="#" className="active">Home</a></li>
-          <li><a href="#">Pages</a></li>
-          <li><a href="#">Products</a></li>
-          <li><a href="#">Blog</a></li>
-          <li><a href="#">Shop</a></li>
-          <li><a href="#">Contact</a></li>
+          <li><a href="#" className="active">HOME</a></li>
+          <li><a href="#">SHOP</a></li>
+          <li><a href="#">ABOUT</a></li>
+          <li><a href="#">COLLECTIONS</a></li>
+          <li><a href="#">CART</a></li>
+          <li><a href="#">CONTACT</a></li>
         </ul>
       </nav>
-      <div className="header-search">
-        <input type="text" placeholder="Search..." />
-        <button>🔍</button>
-      </div>
+      <div className="auth-buttons">
+  <button className="auth-btn">Login / Sign Up</button>
+</div>
+
     </header>
     );
 
