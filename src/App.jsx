@@ -1,4 +1,4 @@
-import { Routes, Route, Link } from 'react-router-dom'; // Import Link for navigation
+import { Routes, Route } from 'react-router-dom'; // Import Link for navigation
 import { useEffect } from 'react';
 
 import Auth from './components/Auth'; // Login/signup component
