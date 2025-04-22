@@ -1,6 +1,12 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:wght@500;700&display=swap');
+
 
 /* src/index.css */
+
+html {
+    scroll-behavior: smooth;
+  }
 
 /*header*/
 header {
@@ -287,7 +293,7 @@ footer {
   
   .product-card img {
     width: 100%;
-    height: 60%;
+    height: 50%;
     border-radius: 10px;
     margin-bottom: 15px;
   }
@@ -346,7 +352,7 @@ footer {
   }
   
   .view-more-btn {
-    background-color: #000;
+    background-color: #3D3D3D;
     color: #fff;
     padding: 12px 24px;
     font-size: 1rem;
@@ -357,7 +363,7 @@ footer {
   }
   
   .view-more-btn:hover {
-    background-color: #444;
+    background-color: #7A7A7A;
   }
   
   /*ABOUT*/
@@ -449,47 +455,71 @@ footer {
   }
     
   /*Category*/
-  .categories-section {
+  /* Category section styling */
+.categories-section {
     padding: 5rem 2rem;
     background-color: #111;
     color: #fff;
     text-align: center;
-  }
-  
-  .category-grid {
+}
+
+.category-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 2rem;
     max-width: 1100px;
     margin: 3rem auto 0;
-  }
-  
-  .category-card {
+}
+
+.category-card {
     background-color: #1e1e1e;
     padding: 1.5rem;
     border-radius: 1rem;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
-  }
-  
-  .category-card:hover {
+}
+
+.category-card:hover {
     transform: translateY(-10px);
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
-  }
-  
-  .category-card img {
+}
+
+.category-card img {
     width: 100%;
     height: 150px;
     object-fit: cover;
     border-radius: 0.75rem;
     margin-bottom: 1rem;
-  }
-  
-  .category-card h3 {
+}
+
+.category-card h3 {
     margin-top: 0.5rem;
     font-size: 1.2rem;
-  }
+}
+
+/* View More Button Styling */
+.view-more-container {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.view-more-btn {
+    padding: 12px 25px;
+    background-color: #42464a;
+    color: white;
+    font-size: 1rem;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.view-more-btn:hover {
+    background-color: #535353;
+}
+
   
+  
+
   /*Perks*/
 
   .perks-section {

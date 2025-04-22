@@ -1,8 +1,7 @@
-import { Routes, Route } from 'react-router-dom'; // Import Routes and Route for routing
+import { Routes, Route, Link } from 'react-router-dom'; // Import Link for navigation
 import { useEffect } from 'react';
 
-// Import components
-import Auth from './components/Auth'; // Import Auth component for login/signup
+import Auth from './components/Auth'; // Login/signup component
 import Featured from './Featured.jsx';
 import Footer from './Footer.jsx';
 import Header from './Header.jsx';
@@ -12,6 +11,9 @@ import Categories from './Category.jsx';
 import Perks from './Perks.jsx';
 import Services from './Services.jsx';
 import Contact from './Contact.jsx';
+
+import Shop from './pages/Shop'; // Import Shop page
+import ScrollToHash from './components/ScrollToHash'; // Import ScrollToHash
 
 function App() {
   useEffect(() => {
@@ -29,9 +31,10 @@ function App() {
 
   return (
     <Routes>
-      {/* Define routes */}
+      {/* Home route */}
       <Route path="/" element={
         <>
+          <ScrollToHash /> {/* Scroll handler for hash navigation */}
           <Header />
           <Hero />
           <Featured />
@@ -43,9 +46,12 @@ function App() {
           <Footer />
         </>
       } />
-      
+
       {/* Auth page route */}
-      <Route path="/auth" element={<Auth />} /> {/* This will render the Auth component */}
+      <Route path="/auth" element={<Auth />} />
+
+      {/* Shop route */}
+      <Route path="/shop" element={<Shop />} />
     </Routes>
   );
 }

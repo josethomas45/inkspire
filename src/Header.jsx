@@ -9,11 +9,11 @@ function Header() {
       <nav className="header-nav">
         <ul>
           <li><a href="#" className="active">HOME</a></li>
-          <li><a href="#">SHOP</a></li>
-          <li><a href="#About">ABOUT</a></li>
-          <li><a href="#categories">CATEGORIES</a></li>
-          <li><a href="#services">CUSTOM</a></li>
-          <li><a href="#contact">CONTACT</a></li>
+          <li><a href="/shop">SHOP</a></li>
+          <li><a href="/#About">ABOUT</a></li>
+          <li><a href="/#categories">CATEGORIES</a></li>
+          <li><a href="/#services">CUSTOM</a></li>
+          <li><a href="/#contact">CONTACT</a></li>
         </ul>
       </nav>
       <div className="auth-buttons">
