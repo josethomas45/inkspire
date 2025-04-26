@@ -13,6 +13,7 @@ import Services from './Services.jsx';
 import Contact from './Contact.jsx';
 
 import Shop from './pages/Shop'; // Import Shop page
+import ProductDetails from './pages/ProductDetails'; // Import ProductDetails page
 import ScrollToHash from './components/ScrollToHash'; // Import ScrollToHash
 
 function App() {
@@ -52,6 +53,9 @@ function App() {
 
       {/* Shop route */}
       <Route path="/shop" element={<Shop />} />
+
+      {/* Product Details route */}
+      <Route path="/product/:productId" element={<ProductDetails />} /> {/* Dynamic product details route */}
     </Routes>
   );
 }

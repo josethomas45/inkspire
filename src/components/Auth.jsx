@@ -22,6 +22,7 @@ function Auth() {
         <h2>{isLogin ? 'Login to Inkspire' : 'Create an Account'}</h2>
 
         <form className="auth-form">
+          {/* Full Name input for sign up only */}
           {!isLogin && (
             <input type="text" placeholder="Full Name" required />
           )}

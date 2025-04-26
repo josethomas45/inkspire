@@ -1,13 +1,42 @@
-import { useNavigate, useLocation } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useNavigate, useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Menu, X } from "lucide-react"; // Icon library
 
 function Header() {
   const navigate = useNavigate();
   const location = useLocation();
   const [activeSection, setActiveSection] = useState("");
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
+  // Check for mobile screen size on mount and on resize
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    // Initial check
+    checkScreenSize();
+    
+    // Add resize listener
+    window.addEventListener("resize", checkScreenSize);
+    
+    // Cleanup
+    return () => window.removeEventListener("resize", checkScreenSize);
+  }, []);
+
+  // Add scrolled effect
   useEffect(() => {
     const handleScroll = () => {
+      // Check if scrolled more than 20px to add shadow effect
+      if (window.scrollY > 20) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+      
+      // Previous section detection code
       const sections = ['About', 'categories', 'services', 'contact'];
       for (let sec of sections) {
         const el = document.getElementById(sec);
@@ -19,12 +48,12 @@ function Header() {
           }
         }
       }
-      setActiveSection(""); // Reset if no section is visible
+      setActiveSection("");
     };
 
     if (location.pathname === "/") {
       window.addEventListener("scroll", handleScroll);
-      handleScroll(); // Trigger on initial load
+      handleScroll();
     }
 
     return () => window.removeEventListener("scroll", handleScroll);
@@ -41,7 +70,8 @@ function Header() {
   };
 
   const scrollToSection = (hash) => {
-    navigate("/"); // Ensure you're on the homepage
+    navigate("/");
+    setMenuOpen(false); // close menu on mobile
     setTimeout(() => {
       const element = document.getElementById(hash.substring(1));
       if (element) {
@@ -50,66 +80,75 @@ function Header() {
     }, 50);
   };
 
+  const toggleMenu = () => setMenuOpen(!menuOpen);
+  
+  const handleAuthClick = () => {
+    navigate("/auth");
+    setMenuOpen(false);
+  };
+
   return (
-    <header className="site-header">
-      <div className="logo" onClick={() => navigate("/")}>
+    <header className={`site-header ${scrolled ? "scrolled" : ""}`}>
+      <div className="logo" onClick={() => { navigate("/"); setMenuOpen(false); }}>
         INK<span>SPIRE</span>
       </div>
-      <nav className="header-nav">
+
+      {/* Nav links */}
+      <nav className={`header-nav ${menuOpen ? "open" : ""}`}>
         <ul>
           <li>
-            <button
-              className={`nav-btn ${isActive("/") ? "active" : ""}`}
-              onClick={() => navigate("/")}
-            >
+            <button className={`nav-btn ${isActive("/") ? "active" : ""}`} onClick={() => { navigate("/"); setMenuOpen(false); }}>
               HOME
             </button>
           </li>
           <li>
-            <button
-              className={`nav-btn ${isActive("/shop") ? "active" : ""}`}
-              onClick={() => navigate("/shop")}
-            >
+            <button className={`nav-btn ${isActive("/shop") ? "active" : ""}`} onClick={() => { navigate("/shop"); setMenuOpen(false); }}>
               SHOP
             </button>
           </li>
           <li>
-            <button
-              className={`nav-btn ${isActive("#About") ? "active" : ""}`}
-              onClick={() => scrollToSection("#About")}
-            >
+            <button className={`nav-btn ${isActive("#About") ? "active" : ""}`} onClick={() => scrollToSection("#About")}>
               ABOUT
             </button>
           </li>
           <li>
-            <button
-              className={`nav-btn ${isActive("#categories") ? "active" : ""}`}
-              onClick={() => scrollToSection("#categories")}
-            >
+            <button className={`nav-btn ${isActive("#categories") ? "active" : ""}`} onClick={() => scrollToSection("#categories")}>
               CATEGORIES
             </button>
           </li>
           <li>
-            <button
-              className={`nav-btn ${isActive("#services") ? "active" : ""}`}
-              onClick={() => scrollToSection("#services")}
-            >
+            <button className={`nav-btn ${isActive("#services") ? "active" : ""}`} onClick={() => scrollToSection("#services")}>
               CUSTOM
             </button>
           </li>
           <li>
-            <button
-              className={`nav-btn ${isActive("#contact") ? "active" : ""}`}
-              onClick={() => scrollToSection("#contact")}
-            >
+            <button className={`nav-btn ${isActive("#contact") ? "active" : ""}`} onClick={() => scrollToSection("#contact")}>
               CONTACT
             </button>
           </li>
+          {/* Show Login button in the menu ONLY when in mobile view */}
+          {isMobile && (
+            <li className="mobile-auth">
+              <button onClick={handleAuthClick} className="auth-btn">
+                Login / Sign Up
+              </button>
+            </li>
+          )}
         </ul>
       </nav>
+
+      {/* Auth + Hamburger */}
       <div className="auth-buttons">
-        <button onClick={() => navigate("/auth")} className="auth-btn">
-          Login / Sign Up
+        {/* Only show the auth button when NOT in mobile view */}
+        {!isMobile && (
+          <button onClick={handleAuthClick} className="auth-btn">
+            Login / Sign Up
+          </button>
+        )}
+        
+        {/* Hamburger visible only on small screens */}
+        <button className="hamburger" onClick={toggleMenu}>
+          {menuOpen ? <X /> : <Menu />}
         </button>
       </div>
     </header>
