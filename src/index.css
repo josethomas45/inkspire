@@ -243,11 +243,11 @@ footer {
     letter-spacing: 0.5px;
   }
 
-  /*HERO*/
   .hero {
     margin-top: 0;
     padding-top: 80px;
     background: url('images/3.png') no-repeat center center/cover;
+    background-size: cover;  /* Ensures background image covers the area */
     height: 100vh;
     display: flex;
     justify-content: flex-end;
@@ -257,56 +257,56 @@ footer {
     text-align: right;
     transition: transform 0.6s ease, filter 0.6s ease, background-size 0.6s ease;
     filter: grayscale(100%) blur(8px);
-  }
-  
-  .hero:hover {
+}
+
+.hero:hover {
     transform: scale(1.05);
     filter: grayscale(0%) blur(0);
-  }
-  
-  .hero:hover::after {
+}
+
+.hero:hover::after {
     background-color: rgba(0, 0, 0, 0.3);
-  }
-  
-  .hero-content {
+}
+
+.hero-content {
     max-width: 600px;
     padding: 20px;
     border-radius: 10px;
     transition: background-color 0.4s ease, backdrop-filter 0.4s ease;
-  }
-  
-  .hero:hover .hero-content {
+}
+
+.hero:hover .hero-content {
     background-color: rgba(0, 0, 0, 0.4);
     backdrop-filter: blur(4px);
-  }
-  
-  .hero h1,
-  .hero p {
+}
+
+.hero h1,
+.hero p {
     color: white;
     opacity: 0;
     transform: translateY(20px);
     transition: transform 0.6s ease, opacity 0.6s ease;
-  }
-  
-  .hero h1 {
+}
+
+.hero h1 {
     font-size: 3rem;
     font-weight: 700;
-  }
-  
-  .hero p {
+}
+
+.hero p {
     font-size: 1.2rem;
     font-weight: 400;
     margin-top: 10px;
-  }
-  
-  .hero:hover h1,
-  .hero:hover p {
+}
+
+.hero:hover h1,
+.hero:hover p {
     opacity: 1;
     transform: translateY(0);
-  }
-  
-  /* Shop Now Button */
-  .cta-btn {
+}
+
+/* Shop Now Button */
+.cta-btn {
     padding: 12px 30px;
     background-color: #ffffff;
     color: #000000;
@@ -314,64 +314,65 @@ footer {
     border-radius: 5px;
     font-size: 1.5rem;
     transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .cta-btn:hover {
+}
+
+.cta-btn:hover {
     background-color: #000000;
     color: #ffffff;
     transform: scale(1.1);
     box-shadow: 0 4px 20px rgba(57, 60, 65, 0.5);
-  }
-  
-  .cta-btn:active {
+}
+
+.cta-btn:active {
     transform: scale(0.98);
-  }
-  
-  /* 🌐 Responsive Styles */
-  @media (max-width: 1024px) {
+}
+
+/* 🌐 Responsive Styles */
+@media (max-width: 1024px) {
     .hero {
-      justify-content: center;
-      padding-right: 0;
-      text-align: center;
+        justify-content: center;
+        padding-right: 0;
+        text-align: center;
     }
-  
+
     .hero-content {
-      max-width: 90%;
-      padding: 20px;
-      margin: 0 auto;
-      text-align: center;
+        max-width: 90%;
+        padding: 20px;
+        margin: 0 auto;
+        text-align: center;
     }
-  }
-  
-  @media (max-width: 768px) {
+}
+
+@media (max-width: 768px) {
     .hero h1 {
-      font-size: 2.5rem;
+        font-size: 2.5rem;
     }
-  
+
     .hero p {
-      font-size: 1rem;
+        font-size: 1rem;
     }
-  
+
     .cta-btn {
-      font-size: 1.2rem;
-      padding: 10px 24px;
+        font-size: 1.2rem;
+        padding: 10px 24px;
     }
-  }
-  
-  @media (max-width: 480px) {
+}
+
+@media (max-width: 480px) {
     .hero h1 {
-      font-size: 2rem;
+        font-size: 2rem;
     }
-  
+
     .hero p {
-      font-size: 0.95rem;
+        font-size: 0.95rem;
     }
-  
+
     .cta-btn {
-      font-size: 1rem;
-      padding: 8px 20px;
+        font-size: 1rem;
+        padding: 8px 20px;
     }
-  }
+}
+
   
   
   
