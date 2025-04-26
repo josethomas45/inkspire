@@ -1,14 +1,29 @@
 # Inkspire – Artistic E-Commerce Platform 🎨  
-Inkspire is a clean, minimalistic e-commerce platform designed to offer a curated, limited collection of artworks from a single artist. The platform provides a streamlined, focused buying experience, where users can purchase only the currently available pieces — no browsing through large catalogs, just a direct and exclusive selection of art. Built with modern tech and a Gen Z-inspired aesthetic, **Inkspire** brings unique art into the hands of passionate collectors.
+
+Inkspire is a clean, minimalistic e-commerce platform built to offer a curated, limited collection of artworks from a single artist. It provides a focused and exclusive buying experience — no overwhelming catalogs, just a direct selection of available pieces. Designed with a Gen Z-inspired aesthetic, **Inkspire** connects passionate art lovers directly with unique creations.
 
 ## Currently Supported Features  
-Users can view and purchase the currently available art pieces, with detailed product descriptions and high-quality previews. The platform ensures a secure and smooth checkout process, offering a straightforward, no-frills shopping experience for art lovers. The artist profile includes background information, giving buyers insight into their creative journey.
+- Browse the featured artworks.
+- View detailed product pages.
+- Send custom order inquiries directly via email to `inkspire@gmail.com`.
+- Smooth navigation with automatic scroll-to-top behavior.
+- Direct artist contact information and social media links.
 
-### Expanding the Functionality  
-For production use, we recommend integrating secure authentication via Auth.js or NextAuth, enabling payments through Stripe or Razorpay, and providing an efficient checkout flow. Email communication can be powered by Resend or Brevo. Analytics tools like Google Analytics can provide valuable insights into user behavior.
+## Expanding the Functionality  
+For future production use:
+- Integrate payment gateways like **Stripe** or **Razorpay**.
+- Add secure authentication via **Auth.js** or **Firebase**.
+- Set up email services like **Resend** or **Brevo** for order confirmations.
+- Improve checkout flows and use **Google Analytics** for user insights.
 
 ## Developer Stack  
-This project uses Next.js for the frontend, Tailwind CSS for styling, Resend for email integration, and Auth.js for authentication. The design focuses on simplicity, performance, and a mobile-first experience.
+- **React** for the frontend  
+- **CSS** for styling  
+- **React Router** for navigation  
+- Custom email sending setup for direct communication
 
-### Resources  
-Check out the [Next.js documentation](https://nextjs.org/docs) and [Tailwind CSS documentation](https://tailwindcss.com/docs) to explore how this project can be extended or customized further.
+The design prioritizes simplicity, responsiveness, and a mobile-first experience.
+
+## Resources  
+- [React Documentation](https://react.dev/)  
+- [React Router Documentation](https://reactrouter.com/en/main)
