@@ -97,7 +97,14 @@ function Header() {
       <nav className={`header-nav ${menuOpen ? "open" : ""}`}>
         <ul>
           <li>
-            <button className={`nav-btn ${isActive("/") ? "active" : ""}`} onClick={() => { navigate("/"); setMenuOpen(false); }}>
+           <button 
+              className={`nav-btn ${isActive("/") ? "active" : ""}`} 
+              onClick={() => { 
+                navigate("/"); 
+                window.scrollTo(0, 0); // <-- Added scroll to top
+                setMenuOpen(false); 
+              }}
+            >
               HOME
             </button>
           </li>

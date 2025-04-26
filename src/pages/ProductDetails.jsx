@@ -1,5 +1,5 @@
-import React from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import products from '../data/products';
 import Header from '../Header';
 import Footer from '../Footer';
@@ -7,6 +7,12 @@ import Footer from '../Footer';
 const ProductDetails = () => {
   const { productId } = useParams();
   const product = products.find((p) => p.id === parseInt(productId));
+  const navigate = useNavigate();
+
+  // Scroll to top when component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scroll to the top of the page when navigating
+  }, []);
 
   if (!product) {
     return (
@@ -23,17 +29,26 @@ const ProductDetails = () => {
   return (
     <>
       <Header />
-      <div style={{
-        padding: '2rem',
-        minHeight: '80vh',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        color: 'white',
-        textAlign: 'center'
-      }}>
+      <div
+        style={{
+          padding: '2rem',
+          minHeight: '80vh',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          color: 'white',
+          textAlign: 'center',
+        }}
+      >
         {/* Product Image with hover effect */}
-        <div style={{ overflow: 'hidden', width: '300px', height: 'auto', marginBottom: '1.5rem' }}>
+        <div
+          style={{
+            overflow: 'hidden',
+            width: '300px',
+            height: 'auto',
+            marginBottom: '1.5rem',
+          }}
+        >
           <img
             src={`/${product.image}`}
             alt={product.name}
@@ -41,16 +56,20 @@ const ProductDetails = () => {
               width: '100%',
               height: 'auto',
               transition: 'transform 0.5s ease',
-              cursor: 'pointer'
+              cursor: 'pointer',
             }}
-            onMouseOver={e => e.currentTarget.style.transform = 'scale(1.1)'}
-            onMouseOut={e => e.currentTarget.style.transform = 'scale(1)'}
+            onMouseOver={(e) => (e.currentTarget.style.transform = 'scale(1.1)')}
+            onMouseOut={(e) => (e.currentTarget.style.transform = 'scale(1)')}
           />
         </div>
 
         {/* Product Details */}
-        <h2 style={{ fontSize: '2rem', marginBottom: '0.5rem', letterSpacing: '1px' }}>{product.name}</h2>
-        <p style={{ fontSize: '1.2rem', marginBottom: '1rem', color: '#ccc' }}>Price: ₹{product.price}</p>
+        <h2 style={{ fontSize: '2rem', marginBottom: '0.5rem', letterSpacing: '1px' }}>
+          {product.name}
+        </h2>
+        <p style={{ fontSize: '1.2rem', marginBottom: '1rem', color: '#ccc' }}>
+          Price: ₹{product.price}
+        </p>
 
         <div style={{ maxWidth: '600px', margin: '0 auto' }}>
           <p style={{ fontSize: '1rem', marginBottom: '1rem', lineHeight: '1.5', color: '#ddd' }}>
@@ -64,53 +83,53 @@ const ProductDetails = () => {
         {/* Buttons */}
         <div style={{ display: 'flex', gap: '1rem', marginTop: '2rem' }}>
           {/* Buy Now Button */}
-          <button 
+          <button
             style={{
               padding: '0.7rem 1.5rem',
-              background: '#00FFAB',
-              color: '#000',
+              background: '#8A2BE2', // Purple
+              color: '#fff',
               border: 'none',
               cursor: 'pointer',
               borderRadius: '30px',
               fontWeight: '600',
               letterSpacing: '1px',
-              transition: 'all 0.3s ease'
+              transition: 'all 0.3s ease',
             }}
-            onMouseOver={e => {
-              e.currentTarget.style.background = '#00cc88';
+            onMouseOver={(e) => {
+              e.currentTarget.style.background = '#9932CC';
               e.currentTarget.style.color = '#fff';
             }}
-            onMouseOut={e => {
-              e.currentTarget.style.background = '#00FFAB';
-              e.currentTarget.style.color = '#000';
+            onMouseOut={(e) => {
+              e.currentTarget.style.background = '#8A2BE2';
+              e.currentTarget.style.color = '#fff';
             }}
-            onClick={() => alert('Proceeding to buy...')}
+            onClick={() => navigate('/checkout', { state: { product } })}
           >
             Buy Now
           </button>
 
           {/* Back to Shop Button */}
-          <button 
+          <button
             style={{
               padding: '0.7rem 1.5rem',
-              background: '#ffffff',
-              color: '#000',
-              border: 'none',
+              background: '#333',
+              color: '#fff',
+              border: '1px solid #555',
               cursor: 'pointer',
               borderRadius: '30px',
               fontWeight: '600',
               letterSpacing: '1px',
-              transition: 'all 0.3s ease'
+              transition: 'all 0.3s ease',
             }}
-            onMouseOver={e => {
-              e.currentTarget.style.background = '#000';
+            onMouseOver={(e) => {
+              e.currentTarget.style.background = '#444';
               e.currentTarget.style.color = '#fff';
-              e.currentTarget.style.border = '1px solid #fff';
+              e.currentTarget.style.border = '1px solid #666';
             }}
-            onMouseOut={e => {
-              e.currentTarget.style.background = '#fff';
-              e.currentTarget.style.color = '#000';
-              e.currentTarget.style.border = 'none';
+            onMouseOut={(e) => {
+              e.currentTarget.style.background = '#333';
+              e.currentTarget.style.color = '#fff';
+              e.currentTarget.style.border = '1px solid #555';
             }}
             onClick={() => window.history.back()}
           >

@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom'; // Import Link for navigation
+import { Routes, Route } from 'react-router-dom';
 import { useEffect } from 'react';
 
 import Auth from './components/Auth'; // Login/signup component
@@ -14,6 +14,7 @@ import Contact from './Contact.jsx';
 
 import Shop from './pages/Shop'; // Import Shop page
 import ProductDetails from './pages/ProductDetails'; // Import ProductDetails page
+import Checkout from './pages/Checkout'; // Import Checkout page
 import ScrollToHash from './components/ScrollToHash'; // Import ScrollToHash
 
 function App() {
@@ -56,6 +57,9 @@ function App() {
 
       {/* Product Details route */}
       <Route path="/product/:productId" element={<ProductDetails />} /> {/* Dynamic product details route */}
+      
+      {/* Checkout route */}
+      <Route path="/checkout" element={<Checkout />} />
     </Routes>
   );
 }

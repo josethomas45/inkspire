@@ -21,13 +21,20 @@ const Shop = () => {
             <img src={product.image} alt={product.name} />
             <h3>{product.name}</h3>
             <p>₹{product.price}</p>
+            
             <button 
               className="view-btn" 
               onClick={() => navigate(`/product/${product.id}`)} // Navigate to product details page
             >
               Details
             </button><br />
-            <button className="buy-btn">Buy Now</button>
+            
+            <button 
+              className="buy-btn" 
+              onClick={() => navigate(`/checkout`, { state: { product } })} // Navigate to checkout page with product info
+            >
+              Buy Now
+            </button>
           </div>
         ))}
       </div>
