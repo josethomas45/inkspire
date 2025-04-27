@@ -53,13 +53,13 @@ function Contact() {
       
           <div className="social-icons">
             <a href="https://www.instagram.com/drippy.canvas" target="_blank" rel="noreferrer">
-              <img src="images/instagram.png" alt="Instagram" />
+              <img src="/images/instagram.png" alt="Instagram" />
             </a>
             <a href="https://www.behance.net/edwinthomas9" target="_blank" rel="noreferrer">
-              <img src="images/behance.png" alt="Behance" />
+              <img src="/images/behance.png" alt="Behance" />
             </a>
             <a href="https://dribbble.com/drippy_canvas" target="_blank" rel="noreferrer">
-              <img src="images/dribble.png" alt="Dribbble" />
+              <img src="/images/dribble.png" alt="Dribbble" />
             </a>
           </div>
         </div>

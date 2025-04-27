@@ -4,7 +4,7 @@ function About() {
       <section id="About" className="about-section">
         <div className="about-content">
           <div className="about-image">
-            <img src="images/10.png" alt="Artist" />
+            <img src="/images/10.png" alt="Artist" />
           </div>
           <div className="about-text">
             <h2>About Inkspire</h2>

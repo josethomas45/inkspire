@@ -246,7 +246,7 @@ footer {
   .hero {
     margin-top: 0;
     padding-top: 80px;
-    background: url('images/3.png') no-repeat center center/cover;
+    background: url('/images/3.png') no-repeat center center/cover;
     background-size: cover;  /* Ensures background image covers the area */
     height: 100vh;
     display: flex;

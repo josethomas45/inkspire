@@ -6,19 +6,19 @@ function Categories() {
       <h2 className="section-title">CATEGORIES YOU CAN FIND HERE</h2>
       <div className="category-grid">
         <div className="category-card">
-          <img src="images/5.jpg" alt="Drawings" />
+          <img src="/images/5.jpg" alt="Drawings" />
           <h3>Drawings</h3>
         </div>
         <div className="category-card">
-          <img src="images/jack2.webp" alt="Apparel" />
+          <img src="/images/jack2.webp" alt="Apparel" />
           <h3>Apparel</h3>
         </div>
         <div className="category-card">
-          <img src="images/6.heic" alt="Phone cases" />
+          <img src="/images/6.heic" alt="Phone cases" />
           <h3>Phone cases</h3>
         </div>
         <div className="category-card">
-          <img src="images/1.jpg" alt="Digital Art" />
+          <img src="/images/1.jpg" alt="Digital Art" />
           <h3>Digital Art</h3>
         </div>
       </div>
