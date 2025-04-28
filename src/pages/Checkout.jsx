@@ -104,7 +104,7 @@ const Checkout = () => {
                 }}
               >
                 <img
-                  src={`/${product.image}`}
+                  src={product.image.startsWith('/') ? product.image : `/${product.image}`}
                   alt={product.name}
                   style={{
                     width: '100%',
