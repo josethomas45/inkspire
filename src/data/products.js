@@ -67,7 +67,7 @@ const products = [
     id: 9,
     name: "Travis Scott Poster",
     price: 1999,
-    image: "/images/posters/telekinesis_ travis,.jpg",
+    image: "/images/posters/telekinesis-travis.jpg",
     description: "Poster inspired by Travis Scott's 'Telekinesis' song, full of raw emotion.",
     review: "Vibrant colors and a perfect tribute to Travis fans.",
   },
