@@ -1,61 +1,38 @@
 import { useNavigate } from 'react-router-dom';
+import products from './data/products.js';
+import { useCart } from './context/CartContext.jsx';
 
 function Featured() {
   const navigate = useNavigate();
+  const { addToCart } = useCart();
 
-  // Product data to pass to the details page
-  const products = [
-    {
-      id: 1,
-      name: "Custom Tshirt",
-      price: 1000,
-      image: "/images/jack1.webp",
-      description: "A personalized t-shirt made with premium cotton and custom designs.",
-      review: "Customers love the feel and design quality!",
-    },
-    {
-      id: 2,
-      name: "Blue Light Collective",
-      price: 1499,
-      image: "/images/9.heic",
-      description: "Exclusive Blue Light Collective merch with limited prints.",
-      review: "Highly rated for its unique artwork and print quality.",
-    },
-    {
-      id: 3,
-      name: "Minimal Poster",
-      price: 499,
-      image: "/images/poster.jpg",
-      description: "A minimalistic poster that adds a sleek touch to any space.",
-      review: "Simple, elegant, and affordable.",
-    }
-  ];
+  // Display first 3 items as featured products
+  const featuredProducts = products.slice(0, 3);
 
   return (
     <section id="Featured" className="featured-section">
       <h2 className="section-title">Featured Products</h2>
       <div className="product-grid">
-        {products.map((product) => (
+        {featuredProducts.map((product) => (
           <div key={product.id} className="product-card">
-            <img src={product.image} alt={product.name} />
+            <div className="product-image-wrapper" onClick={() => navigate(`/product/${product.id}`)}>
+              <img src={product.image} alt={product.name} />
+            </div>
             <h3>{product.name}</h3>
-            <p>₹{product.price}</p>
+            <p className="product-price">₹{product.price}</p>
 
-            {/* Keep the same button alignment/position */}
-            <div style={{ textAlign: 'center' }}>
+            <div className="product-actions">
               <button
                 className="view-btn"
-                onClick={() => navigate(`/product/${product.id}`)} // Pass product ID to navigate
-                style={{ display: 'inline-block', marginBottom: '10px' }} // Keep same styling for alignment
+                onClick={() => navigate(`/product/${product.id}`)}
               >
                 Details
-              </button><br />
+              </button>
               <button
                 className="buy-btn"
-                onClick={() => navigate('/checkout', { state: { product } })} // Pass product to checkout
-                style={{ display: 'inline-block', marginTop: '10px' }} // Keep same styling for alignment
+                onClick={() => addToCart(product, 1)}
               >
-                Buy Now
+                Add to Cart
               </button>
             </div>
           </div>

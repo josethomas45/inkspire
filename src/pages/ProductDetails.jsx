@@ -1,140 +1,148 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import products from '../data/products';
 import Header from '../Header';
 import Footer from '../Footer';
+import { useCart } from '../context/CartContext';
+import './ProductDetails.css';
 
 const ProductDetails = () => {
   const { productId } = useParams();
   const product = products.find((p) => p.id === parseInt(productId));
   const navigate = useNavigate();
+  const { addToCart } = useCart();
+  const [quantity, setQuantity] = useState(1);
 
   // Scroll to top when component mounts
   useEffect(() => {
-    window.scrollTo(0, 0); // Scroll to the top of the page when navigating
+    window.scrollTo(0, 0); 
   }, []);
 
   if (!product) {
     return (
       <>
         <Header />
-        <div style={{ textAlign: 'center', padding: '5rem', color: 'white' }}>
-          <h2>Product not found</h2>
+        <div className="not-found-container">
+          <h2>PRODUCT NOT FOUND</h2>
+          <p>The product you are looking for does not exist or has been removed.</p>
+          <button className="details-back-btn" onClick={() => navigate('/shop')}>
+            Return to Shop
+          </button>
         </div>
         <Footer />
       </>
     );
   }
 
+  // Determine category for display tag
+  const getCategory = (item) => {
+    const name = item.name.toLowerCase();
+    const desc = item.description.toLowerCase();
+    if (
+      name.includes("tshirt") || 
+      name.includes("t-shirt") || 
+      name.includes("apparel") || 
+      name.includes("jacket") || 
+      name.includes("pants") || 
+      name.includes("hoodie")
+    ) {
+      return "Apparel";
+    }
+    if (name.includes("poster")) {
+      return "Posters";
+    }
+    if (
+      name.includes("drawing") || 
+      name.includes("painting") || 
+      name.includes("sketch") || 
+      desc.includes("watercolor") || 
+      desc.includes("pencil sketch") || 
+      desc.includes("painting") ||
+      name.includes("watercolour")
+    ) {
+      return "Drawings";
+    }
+    if (name.includes("case")) {
+      return "Phone Cases";
+    }
+    return "Merchandise";
+  };
+
+  const handleIncrement = () => setQuantity((prev) => prev + 1);
+  const handleDecrement = () => setQuantity((prev) => (prev > 1 ? prev - 1 : 1));
+
+  const handleAddToCart = () => {
+    addToCart(product, quantity);
+    // Optionally open the cart drawer or give visual feedback
+  };
+
   return (
     <>
       <Header />
-      <div
-        style={{
-          padding: '2rem',
-          minHeight: '80vh',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          color: 'white',
-          textAlign: 'center',
-        }}
-      >
-        {/* Product Image with hover effect */}
-        <div
-          style={{
-            overflow: 'hidden',
-            width: '300px',
-            height: 'auto',
-            marginBottom: '1.5rem',
-          }}
-        >
-          <img
-            src={product.image.startsWith('/') ? product.image : `/${product.image}`}
-            alt={product.name}
-            style={{
-              width: '100%',
-              height: 'auto',
-              transition: 'transform 0.5s ease',
-              cursor: 'pointer',
-            }}
-            onMouseOver={(e) => (e.currentTarget.style.transform = 'scale(1.1)')}
-            onMouseOut={(e) => (e.currentTarget.style.transform = 'scale(1)')}
-          />
-        </div>
+      <div className="details-page-wrapper">
+        <div className="details-container">
+          
+          {/* Left - Image Column */}
+          <div className="details-image-section">
+            <div className="details-image-card">
+              <img
+                src={product.image.startsWith('/') ? product.image : `/${product.image}`}
+                alt={product.name}
+              />
+            </div>
+          </div>
 
-        {/* Product Details */}
-        <h2 style={{ fontSize: '2rem', marginBottom: '0.5rem', letterSpacing: '1px' }}>
-          {product.name}
-        </h2>
-        <p style={{ fontSize: '1.2rem', marginBottom: '1rem', color: '#ccc' }}>
-          Price: ₹{product.price}
-        </p>
+          {/* Right - Product Details Column */}
+          <div className="details-content-section">
+            <span className="details-category-tag">{getCategory(product)}</span>
+            <h2>{product.name}</h2>
+            <p className="details-price">₹{product.price}</p>
+            
+            <hr className="details-divider" />
 
-        <div style={{ maxWidth: '600px', margin: '0 auto' }}>
-          <p style={{ fontSize: '1rem', marginBottom: '1rem', lineHeight: '1.5', color: '#ddd' }}>
-            <strong>Description:</strong> {product.description}
-          </p>
-          <p style={{ fontSize: '1rem', lineHeight: '1.5', color: '#bbb' }}>
-            <strong>Review:</strong> {product.review}
-          </p>
-        </div>
+            <div className="details-description-block">
+              <h4>Description</h4>
+              <p>{product.description}</p>
+            </div>
 
-        {/* Buttons */}
-        <div style={{ display: 'flex', gap: '1rem', marginTop: '2rem' }}>
-          {/* Buy Now Button */}
-          <button
-            style={{
-              padding: '0.7rem 1.5rem',
-              background: '#8A2BE2', // Purple
-              color: '#fff',
-              border: 'none',
-              cursor: 'pointer',
-              borderRadius: '30px',
-              fontWeight: '600',
-              letterSpacing: '1px',
-              transition: 'all 0.3s ease',
-            }}
-            onMouseOver={(e) => {
-              e.currentTarget.style.background = '#9932CC';
-              e.currentTarget.style.color = '#fff';
-            }}
-            onMouseOut={(e) => {
-              e.currentTarget.style.background = '#8A2BE2';
-              e.currentTarget.style.color = '#fff';
-            }}
-            onClick={() => navigate('/checkout', { state: { product } })}
-          >
-            Buy Now
-          </button>
+            <div className="details-review-block">
+              <h4>Artist Review</h4>
+              <p>"{product.review}"</p>
+            </div>
 
-          {/* Back to Shop Button */}
-          <button
-            style={{
-              padding: '0.7rem 1.5rem',
-              background: '#333',
-              color: '#fff',
-              border: '1px solid #555',
-              cursor: 'pointer',
-              borderRadius: '30px',
-              fontWeight: '600',
-              letterSpacing: '1px',
-              transition: 'all 0.3s ease',
-            }}
-            onMouseOver={(e) => {
-              e.currentTarget.style.background = '#444';
-              e.currentTarget.style.color = '#fff';
-              e.currentTarget.style.border = '1px solid #666';
-            }}
-            onMouseOut={(e) => {
-              e.currentTarget.style.background = '#333';
-              e.currentTarget.style.color = '#fff';
-              e.currentTarget.style.border = '1px solid #555';
-            }}
-            onClick={() => window.history.back()}
-          >
-            Back to Shop
-          </button>
+            <hr className="details-divider" />
+
+            {/* Quantity Selector controls */}
+            <div className="details-quantity-selector">
+              <span>Quantity</span>
+              <div className="qty-controls">
+                <button className="qty-btn" onClick={handleDecrement}>-</button>
+                <input
+                  type="number"
+                  className="qty-input"
+                  value={quantity}
+                  onChange={(e) => {
+                    const val = parseInt(e.target.value);
+                    if (!isNaN(val) && val > 0) setQuantity(val);
+                  }}
+                  min="1"
+                />
+                <button className="qty-btn" onClick={handleIncrement}>+</button>
+              </div>
+            </div>
+
+            {/* CTA Actions */}
+            <div className="details-actions">
+              <button className="details-add-btn" onClick={handleAddToCart}>
+                Add to Cart
+              </button>
+              <button className="details-back-btn" onClick={() => navigate('/shop')}>
+                Back to Shop
+              </button>
+            </div>
+
+          </div>
+
         </div>
       </div>
       <Footer />

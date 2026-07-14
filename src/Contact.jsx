@@ -19,19 +19,35 @@ function Contact() {
       to_email: "inkspireart@gmail.com", // Recipient email
     };
 
+    const serviceId = "your_service_id";
+    const templateId = "your_template_id";
+    const userId = "your_user_id";
+
+    // Gracefully handle placeholder credentials for local demonstration
+    if (serviceId === "your_service_id" || templateId === "your_template_id" || userId === "your_user_id") {
+      console.warn("EmailJS is not configured. Simulating email transmission.");
+      setTimeout(() => {
+        setIsSubmitting(false);
+        alert("Your message has been sent! (Simulated submission - configure EmailJS credentials in Contact.jsx for production)");
+        form.reset();
+      }, 1000);
+      return;
+    }
+
     // Send email using EmailJS
     emailjs
       .send(
-        "your_service_id", // Replace with your EmailJS service ID
-        "your_template_id", // Replace with your EmailJS template ID
+        serviceId,
+        templateId,
         emailParams,
-        "your_user_id" // Replace with your EmailJS user ID
+        userId
       )
       .then(
         (response) => {
           console.log("Message sent successfully!", response.status, response.text);
           setIsSubmitting(false);
           alert("Your message has been sent!");
+          form.reset();
         },
         (err) => {
           console.error("Failed to send message.", err);
