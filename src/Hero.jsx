@@ -4,9 +4,9 @@ function Hero() {
   return (
     <section id="hero" className="hero">
       <div className="hero-content">
-        <h1>WELCOME TO INKSPIRE</h1>
-        <p>Your one-stop shop for the best artistic products!</p><br></br>
-        <a href="#Featured" className="cta-btn">Shop Now</a>
+        <h1>CREATIVE VISUAL ARTS &amp; DESIGN MERCHANDISE</h1>
+        <p>Discover hand-crafted drawings, premium custom apparel, phone cases, and minimalist posters designed to inspire creativity.</p>
+        <a href="#Featured" className="cta-btn">EXPLORE MERCH</a>
       </div>
     </section>
   );
