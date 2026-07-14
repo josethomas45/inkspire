@@ -966,6 +966,7 @@ body {
 .contact-section {
   padding: 100px 24px;
   background-color: var(--bg-main);
+  text-align: center;
 }
 
 .contact-container {
